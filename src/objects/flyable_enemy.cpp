@@ -1,4 +1,4 @@
-#include "FlyableEnemy.hpp"
+#include "flyable_enemy.hpp"
 
 #include "map_movable.hpp"
 
@@ -29,5 +29,11 @@ void FlyableEnemy::process_mario_collision(Collisionable* mario) noexcept {
 	} else {
 		mario->kill();
 	}
+}
+
+void FlyableEnemy::process_vertical_static_collision(Rect* obj) noexcept {
+}
+
+void FlyableEnemy::move_vertically() noexcept {
 }
 
