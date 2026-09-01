@@ -86,7 +86,7 @@ void ConsoleGameMap::remove_objs() {
 void ConsoleGameMap::show() const noexcept {
 	#ifdef WINDOWS_CONSOLE
 		for (int i = 0; i < height; i++) {
-			std::cout << map[i];
+			std::cout << map[i] << '\n';
 		}
 	#elif defined(LINUX_CONSOLE)
 		for (int i = 0; i < height; i++) {
