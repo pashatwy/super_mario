@@ -6,7 +6,7 @@ using biv::JumpingEnemy;
 
 JumpingEnemy::JumpingEnemy(const Coord& top_left, const int width, const int height) 
 	: RectMapMovableAdapter(top_left, width, height) {
-	vspeed = 0.2;
+	vspeed = 0;
 	hspeed = 0;
 }
 
@@ -32,17 +32,10 @@ void JumpingEnemy::process_mario_collision(Collisionable* mario) noexcept {
 }
 
 void JumpingEnemy::process_vertical_static_collision(Rect* obj) noexcept {
-	top_left.x += hspeed;
-	if (!has_collision(obj)) {
-		process_horizontal_static_collision(obj);
-	} else {
-		top_left.x -= hspeed;
-	}
-	
-	if (vspeed > 0) {
-		top_left.y -= vspeed;
-		vspeed = 0;
-	}
+    if (vspeed > 0) {
+        top_left.y -= vspeed;
+        vspeed = 0;
+    }
+    vspeed = -0.7f;
 }
-
 
