@@ -29,6 +29,7 @@ void Game::add_static_obj(Rect* obj) {
 void Game::check_horizontally_static_collisions() noexcept {
 	for (Collisionable* obj: collisionable_objs) {
 		for (Rect* static_obj: static_objs) {
+			if (static_obj == dynamic_cast<Rect*>(obj)) continue; 
 			if (obj->has_collision(static_obj)) {
 				obj->process_horizontal_static_collision(static_obj);
 				break;
@@ -70,6 +71,7 @@ void Game::check_vertically_static_collisions() noexcept {
 	
 	for (Collisionable* obj: collisionable_objs) {
 		for (Rect* static_obj: static_objs) {
+			if (static_obj == dynamic_cast<Rect*>(obj)) continue;
 			if (obj->has_collision(static_obj)) {
 				obj->process_vertical_static_collision(static_obj);
 				break;

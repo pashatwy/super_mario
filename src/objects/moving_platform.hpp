@@ -8,6 +8,8 @@
 
 namespace biv {
 	class MovingPlatform : public RectMapMovableAdapter, public Movable, public Collisionable{
+		private:
+			Mario* passenger = nullptr;
 		public:
 			MovingPlatform(const Coord& top_left, const int width, const int height);
 

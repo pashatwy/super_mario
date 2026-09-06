@@ -19,11 +19,12 @@ biv::Speed MovingPlatform::get_speed() const noexcept {
 }
 
 void MovingPlatform::process_horizontal_static_collision(Rect* obj) noexcept {
-	hspeed = -hspeed;
-	move_horizontally();
+    hspeed = -hspeed;
+    move_horizontally();
 }
 
 void MovingPlatform::process_mario_collision(Collisionable* mario) noexcept {
+	
 }
 
 void MovingPlatform::process_vertical_static_collision(Rect* obj) noexcept {

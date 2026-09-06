@@ -16,6 +16,7 @@ void ConsoleUIFactory::clear_data() {
 	flyable_enemies.clear();
 	jumping_enemies.clear();
 	moneys.clear();
+	moving_platforms.clear();
 }
 
 void ConsoleUIFactory::create_box(
@@ -48,6 +49,18 @@ void ConsoleUIFactory::create_flyable_enemy(
 	game->add_movable(flyable_enemy);
 	game->add_collisionable(flyable_enemy);
 	game_map->add_obj(flyable_enemy);
+}
+
+void ConsoleUIFactory::create_moving_platform(
+	const Coord& top_left, const int width, const int height
+) {
+	ConsoleMovingPlatform* moving_platform = new ConsoleMovingPlatform(top_left, width, height);
+	moving_platforms.push_back(moving_platform);
+	game->add_map_movable(moving_platform);
+	game->add_movable(moving_platform);
+	game->add_collisionable(moving_platform);
+	game->add_static_obj(moving_platform);
+	game_map->add_obj(moving_platform);
 }
 
 void ConsoleUIFactory::create_jumping_enemy(
