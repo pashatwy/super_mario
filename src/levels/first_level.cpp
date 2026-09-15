@@ -21,34 +21,31 @@ biv::GameLevel* FirstLevel::get_next() {
 // ----------------------------------------------------------------------------
 void FirstLevel::init_data() {
 	ui_factory->create_mario({39, 10}, 3, 3);
-	
-	ui_factory->create_moving_platform({35, 20}, 10, 2);
-	
-	ui_factory->create_ship({20, 25}, 40, 2);
-	
-	ui_factory->create_full_box({30, 15}, 5, 3);
-	ui_factory->create_full_box({50, 15}, 5, 3);
-	
-	ui_factory->create_ship({60, 20}, 40, 7);
-	
-	ui_factory->create_box({60, 10}, 10, 3);
-	ui_factory->create_full_box({70, 10}, 5, 3);
-	ui_factory->create_box({75, 10}, 5, 3);
-	ui_factory->create_full_box({80, 10}, 5, 3);
-	ui_factory->create_box({85, 10}, 10, 3);
-	
-	ui_factory->create_ship({100, 25}, 20, 2);
-	ui_factory->create_ship({120, 20}, 10, 7);
-	ui_factory->create_ship({150, 25}, 40, 2);
-	ui_factory->create_ship({210, 20}, 15, 7);
-	
-	//ui_factory->create_enemy({20, 5}, 3, 2);
-	ui_factory->create_jumping_enemy({25, 5}, 3, 2);	
-	
-	ui_factory->create_enemy({70, 15}, 3, 2);
-	ui_factory->create_enemy({80, 5}, 3, 2);
-	ui_factory->create_enemy({125, 5}, 3, 2);
-	ui_factory->create_enemy({160, 5}, 3, 2);
-	
-	ui_factory->create_flyable_enemy({20, 5}, 3, 2);
+
+	ui_factory->create_ship({0, 25}, 55, 2);
+
+	ui_factory->create_box({10, 18}, 5, 2);
+	ui_factory->create_full_box({20, 18}, 5, 2);
+	ui_factory->create_box({30, 18}, 5, 2);
+
+	ui_factory->create_enemy({15, 22}, 3, 2);
+	ui_factory->create_jumping_enemy({35, 22}, 3, 2);
+	ui_factory->create_flyable_enemy({25, 10}, 3, 2);
+
+	ui_factory->create_ship({55, 20}, 10, 7);
+	ui_factory->create_moving_platform({65, 18}, 10, 2);
+	ui_factory->create_ship({85, 20}, 10, 7);
+
+	ui_factory->create_ship({95, 25}, 60, 2);
+
+	ui_factory->create_full_box({100, 18}, 5, 2);
+	ui_factory->create_box({110, 18}, 5, 2);
+	ui_factory->create_full_box({120, 18}, 5, 2);
+
+	ui_factory->create_enemy({105, 22}, 3, 2);
+	ui_factory->create_enemy({130, 22}, 3, 2);
+	ui_factory->create_flyable_enemy({115, 10}, 3, 2);
+	ui_factory->create_jumping_enemy({140, 22}, 3, 2);
+
+	ui_factory->create_ship({155, 20}, 15, 7);
 }
