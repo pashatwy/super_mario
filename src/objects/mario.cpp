@@ -28,7 +28,9 @@ void Mario::process_horizontal_static_collision(Rect* obj) noexcept {
 	move_horizontally();
 }
 
-void Mario::process_mario_collision(Collisionable* mario) noexcept {}
+void Mario::process_mario_collision(Collisionable* mario) noexcept {
+	
+}
 
 void Mario::process_vertical_static_collision(Rect* obj) noexcept {
 	if (vspeed > 0) {
@@ -39,4 +41,24 @@ void Mario::process_vertical_static_collision(Rect* obj) noexcept {
 		top_left.y -= vspeed;
 	}
 	vspeed = 0;
+}
+
+void Mario::set_hspeed(float speed) noexcept {
+    hspeed = speed;
+}
+
+int Mario::get_camera_direction() noexcept {
+    if (top_left.x < 15) {
+        move_map_left();
+        return 1;
+    } else if (top_left.x + width > 65) {
+        move_map_right();
+        return -1;
+    }
+    return 0;
+}
+
+void Mario::jump() noexcept {
+    hspeed = 0;
+    Movable::jump();
 }

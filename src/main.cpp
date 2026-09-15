@@ -95,6 +95,20 @@ int main() {
 				game.finish();
 				break;
 		}
+	
+		int camera_direction = mario->get_camera_direction();
+		switch (camera_direction) {
+			case 1:
+				if (!game.check_static_collisions(mario)) {
+					game.move_map_right();
+				}
+				break;
+			case -1:
+				if (!game.check_static_collisions(mario)) {
+					game.move_map_left();
+				}
+				break;
+		}
 		
 		// 3. Обновление внутреннего состояния игры
 		game.move_objs_horizontally();
@@ -103,6 +117,8 @@ int main() {
 		game.move_objs_vertically();
 		game.check_mario_collision();
 		game.check_vertically_static_collisions();
+		
+
 		
 		if (
 			game_map->is_below_map(mario->get_top())

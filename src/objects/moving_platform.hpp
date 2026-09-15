@@ -1,5 +1,7 @@
 #pragma once
 
+#include "mario.hpp"
+
 #include "collisionable.hpp"
 #include "movable.hpp"
 #include "rect.hpp"
@@ -21,5 +23,6 @@ namespace biv {
 			void process_vertical_static_collision(Rect*) noexcept override;
 			
 			void move_vertically() noexcept override;
+			void move_horizontally() noexcept override;
 	};
 }
