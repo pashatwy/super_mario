@@ -18,6 +18,10 @@ float Movable::get_vspeed() const noexcept {
 	return vspeed;
 }
 
+float Movable::get_hspeed() const noexcept {
+	return vspeed;
+}
+
 void Movable::jump() noexcept {
 	if (vspeed == 0) {
 		vspeed = JUMP_SPEED;

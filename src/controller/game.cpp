@@ -22,6 +22,14 @@ void Game::add_movable(Movable* obj) {
 	movable_objs.push_back(obj);
 }
 
+void Game::add_move_collisionable(MovableCollisionable* obj) {
+	move_collisionable_objs.push_back(obj);
+}
+
+void Game::add_movable_platform(Collisionable* obj) {
+	movable_platform_objs.push_back(obj);
+}
+
 void Game::add_static_obj(Rect* obj) {
 	static_objs.push_back(obj);
 }
@@ -29,7 +37,7 @@ void Game::add_static_obj(Rect* obj) {
 void Game::check_horizontally_static_collisions() noexcept {
 	for (Collisionable* obj: collisionable_objs) {
 		for (Rect* static_obj: static_objs) {
-			if (static_obj == dynamic_cast<Rect*>(obj)) continue; 
+			if (static_obj == dynamic_cast<Rect*>(obj)) continue;
 			if (obj->has_collision(static_obj)) {
 				obj->process_horizontal_static_collision(static_obj);
 				break;
@@ -46,7 +54,6 @@ void Game::check_mario_collision() {
 			if (!mario->is_active()) {
 				break;
 			} else if (!obj->is_active()) {
-				// TODO
 				collisionable_objs[i] = collisionable_objs.back();
 				collisionable_objs.pop_back();
 				i--;
@@ -74,6 +81,15 @@ void Game::check_vertically_static_collisions() noexcept {
 			if (static_obj == dynamic_cast<Rect*>(obj)) continue;
 			if (obj->has_collision(static_obj)) {
 				obj->process_vertical_static_collision(static_obj);
+				break;
+			}
+		}
+	}
+
+	for (MovableCollisionable* obj: move_collisionable_objs) {
+		for (Collisionable* platform: movable_platform_objs) {
+			if (obj->has_collision(dynamic_cast<Rect*>(platform))) {
+				obj->process_movable_collisionable(platform);
 				break;
 			}
 		}
@@ -132,10 +148,20 @@ void Game::remove_movable(Movable* obj) {
 	remove_obj(movable_objs, obj);
 }
 
+void Game::remove_move_collisionable(MovableCollisionable* obj) {
+	remove_obj(move_collisionable_objs, obj);
+}
+
+void Game::remove_movable_platform(Collisionable* obj) {
+	remove_obj(movable_platform_objs, obj);
+}
+
 void Game::remove_objs() {
 	collisionable_objs.clear();
 	map_movable_objs.clear();
 	movable_objs.clear();
+	move_collisionable_objs.clear();
+	movable_platform_objs.clear();
 	static_objs.clear();
 	remove_mario();
 }

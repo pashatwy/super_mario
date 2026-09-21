@@ -1,12 +1,12 @@
 #pragma once
 
-#include "collisionable.hpp"
-#include "movable.hpp"
+#include "movable_collisionable.hpp"
 #include "rect.hpp"
 #include "speed.hpp"
 
+
 namespace biv {
-	class Mario : public Movable, public Collisionable {
+	class Mario : public MovableCollisionable {
 		public:
 			Mario(const Coord& top_left, const int width, const int height);
 
@@ -24,5 +24,10 @@ namespace biv {
 			void set_hspeed(float speed) noexcept;
 			
 			void jump() noexcept;
+			void process_movable_collisionable(Collisionable* platform) noexcept override;
+			
+			void move_horizontally() noexcept override;
+			void move_vertically() noexcept override;
+			
 	};
 }

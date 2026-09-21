@@ -1,7 +1,5 @@
 #pragma once
 
-#include "mario.hpp"
-
 #include "collisionable.hpp"
 #include "movable.hpp"
 #include "rect.hpp"
@@ -9,9 +7,7 @@
 #include "speed.hpp"
 
 namespace biv {
-	class MovingPlatform : public RectMapMovableAdapter, public Movable, public Collisionable{
-		private:
-			Mario* passenger = nullptr;
+	class MovingPlatform : public RectMapMovableAdapter,  public Movable, public Collisionable{
 		public:
 			MovingPlatform(const Coord& top_left, const int width, const int height);
 

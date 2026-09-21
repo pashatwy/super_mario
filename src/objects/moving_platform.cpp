@@ -20,14 +20,6 @@ biv::Speed MovingPlatform::get_speed() const noexcept {
 
 void MovingPlatform::move_horizontally() noexcept {
     top_left.x += hspeed;
-    if (passenger != nullptr) {
-        if (passenger->get_vspeed() != 0) {
-            passenger->set_hspeed(0);
-            passenger = nullptr;
-        } else {
-            passenger->set_hspeed(hspeed); 
-        }
-    }
 }
 
 void MovingPlatform::process_horizontal_static_collision(Rect* obj) noexcept {
@@ -36,10 +28,6 @@ void MovingPlatform::process_horizontal_static_collision(Rect* obj) noexcept {
 }
 
 void MovingPlatform::process_mario_collision(Collisionable* mario) noexcept {
-    Mario* m = dynamic_cast<Mario*>(mario);
-    if (m->get_vspeed() <= 0) return;
-    passenger = m;
-    m->set_hspeed(hspeed);
 }
 
 void MovingPlatform::process_vertical_static_collision(Rect* obj) noexcept {

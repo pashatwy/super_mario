@@ -57,9 +57,9 @@ void ConsoleUIFactory::create_moving_platform(
 	ConsoleMovingPlatform* moving_platform = new ConsoleMovingPlatform(top_left, width, height);
 	moving_platforms.push_back(moving_platform);
 	game->add_map_movable(moving_platform);
-	game->add_movable(moving_platform);
 	game->add_collisionable(moving_platform);
-	game->add_static_obj(moving_platform);
+	game->add_movable(moving_platform);
+	game->add_movable_platform(moving_platform);
 	game_map->add_obj(moving_platform);
 }
 
@@ -88,6 +88,7 @@ void ConsoleUIFactory::create_full_box(
 void ConsoleUIFactory::create_mario(
 	const Coord& top_left, const int width, const int height
 ) {
+	game->remove_move_collisionable(mario);
 	game->remove_collisionable(mario);
 	game->remove_movable(mario);
 	game->remove_mario();
@@ -97,6 +98,7 @@ void ConsoleUIFactory::create_mario(
 	
 	mario = new ConsoleMario(top_left, width, height);
 	game->add_collisionable(mario);
+	game->add_move_collisionable(mario);
 	game->add_movable(mario);
 	game->add_mario(mario);
 	game_map->add_obj(mario);
